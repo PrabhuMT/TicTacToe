@@ -29,36 +29,13 @@ function handleCellClick(e) {
   gameState[clickedCellIndex] = currentPlayer;
   clickedCell.innerText = currentPlayer;
   checkWin();
-  checkDraw();
   currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
 }
-
-// function checkWin() {
-//   for (let condition of winningConditions) {
-//     const [a, b, c] = condition;
-//     if (gameState[a] === '' || gameState[b] === '' || gameState[c] === '') {
-//       continue;
-//     }
-//     if (gameState[a] === gameState[b] && gameState[b] === gameState[c]) {
-//       gameActive = false;
-//       status.innerText = `${currentPlayer} wins!`;
-//       return;
-//     }
-//   }
-// }
-
-// function checkDraw() {
-//   if (!gameState.includes('')) {
-//     gameActive = false;
-//     status.innerText = 'It\'s a draw!';
-//   }
-// }
 
 function restartGame() {
   currentPlayer = 'X';
   gameActive = true;
   gameState = ['', '', '', '', '', '', '', '', ''];
-  status.innerText = '';
   cells.forEach(cell => cell.innerText = '');
 }
 
@@ -94,9 +71,12 @@ function showPopup(message) {
       }
       if (gameState[a] === gameState[b] && gameState[b] === gameState[c]) {
         gameActive = false;
-        // status.innerText = `${currentPlayer} wins!`;
         showPopup(`${currentPlayer} wins!`);
+        // restartGame()
         return;
+      }
+      else {
+        checkDraw()
       }
     }
   }
@@ -104,7 +84,6 @@ function showPopup(message) {
   function checkDraw() {
     if (!gameState.includes('')) {
       gameActive = false;
-    //   status.innerText = 'It\'s a draw!';
         showPopup('It\'s a draw!');
         return;
     }

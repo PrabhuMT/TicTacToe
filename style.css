@@ -10,11 +10,12 @@ body {
     height: 100vh;
     justify-content: center;
     align-content: center;
+    padding: 10px 0px;
   }
   
   .board {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
+    grid-template-columns: repeat(3, 70px);
     grid-gap: 5px;
     margin-bottom: 20px;
     justify-content: center;
@@ -22,13 +23,13 @@ body {
   }
   
   .cell {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     background-color: #ddd;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 1.5em;
     cursor: pointer;
   }
   
